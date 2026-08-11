@@ -99,3 +99,11 @@ RNN 계열과 커스텀 활성화는 배제해 ONNX -> TensorRT 변환 경로를
 - [x] 1단계: PTB-XL 분류 베이스라인, test macro AUROC 0.9143
 - [ ] 1단계 마무리: INT8 양자화 + Jetson AGX Orin 지연 측정
 - [ ] 2단계: 프로젝터 + LoRA SFT 판독문 생성 (스트레치)
+
+---
+
+## 문서
+
+- [DESIGN.md](DESIGN.md) 설계 명세. 하드웨어 제약, 데이터 파이프라인, 모델/학습 규격, 실험 결과
+- [docs/DOMAIN.md](docs/DOMAIN.md) ECG 도메인 명세. 신호가 생리적으로 무엇인지, 12리드의 의미,
+  5개 진단 클래스의 임상적 정의, 관련 논문
