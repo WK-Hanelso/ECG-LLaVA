@@ -1,0 +1,72 @@
+{
+  "created_at": "2026-08-11T11:27:01",
+  "raw_root": "/mnt/hdd_storage/datasets/ptb-xl/ptb-xl-1.0.3",
+  "ptbxl_version": "1.0.3",
+  "sampling_rate": 100,
+  "label_set": "superdiagnostic",
+  "classes": [
+    "NORM",
+    "MI",
+    "STTC",
+    "CD",
+    "HYP"
+  ],
+  "n_total_records": 21799,
+  "n_dropped_empty_label": 411,
+  "n_used": 21388,
+  "n_lead_order_mismatch": 0,
+  "n_records_with_nan": 0,
+  "n_length_mismatch": 0,
+  "lead_order": [
+    "I",
+    "II",
+    "III",
+    "AVR",
+    "AVL",
+    "AVF",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6"
+  ],
+  "signal_shape": [
+    21388,
+    12,
+    1000
+  ],
+  "signal_dtype": "float32",
+  "split": {
+    "train_folds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "val_folds": [
+      9
+    ],
+    "test_folds": [
+      10
+    ],
+    "n_train": 17084,
+    "n_val": 2146,
+    "n_test": 2158
+  },
+  "class_positives": {
+    "NORM": 9514,
+    "MI": 5469,
+    "STTC": 5235,
+    "CD": 4898,
+    "HYP": 2649
+  },
+  "sha256": {
+    "ptbxl_database.csv": "7600de9c1b27d181d850b3c6038a35d7c3ddb6bb33b702e3a20252a6859d216b",
+    "scp_statements.csv": "ad05b0b1fcae83bb1230755ad9cfc7c96f303feddc08a4a9ad5bdc9ca63bac8f"
+  }
+}

@@ -1,0 +1,14 @@
+# Python 3.11.9 (pyenv). system 3.8 은 2단계 transformers 에서 막힌다.
+# torch 는 CUDA 휠 인덱스가 필요하다:
+#   pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+# cu121 선택 근거: 드라이버 535.230.02 는 CUDA 12.2 까지 지원 (DESIGN.md 8절).
+torch==2.5.1+cu121
+
+numpy==2.4.6
+pandas==3.0.5
+scikit-learn==1.9.0
+scipy==1.17.1
+tqdm==4.70.0
+
+# 전처리 전용. 학습/추론 경로에는 import 하지 않는다 (Orin 배포 시 의존성 제거 목적).
+wfdb==4.3.1

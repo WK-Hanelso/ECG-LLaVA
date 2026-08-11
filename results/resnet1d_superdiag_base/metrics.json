@@ -1,0 +1,43 @@
+{
+  "exp_name": "resnet1d_superdiag_base",
+  "best_epoch": 5,
+  "epochs_run": 15,
+  "n_params": 8739973,
+  "feature_shape": [
+    1,
+    512,
+    32
+  ],
+  "val": {
+    "macro_auroc": 0.9202662340838288,
+    "per_class_auroc": {
+      "NORM": 0.9402002804629837,
+      "MI": 0.9068176052765095,
+      "STTC": 0.9340550904596022,
+      "CD": 0.921172353455818,
+      "HYP": 0.8990858407642301
+    },
+    "n_classes_in_macro": 5,
+    "macro_f1": 0.7143139532088665,
+    "micro_f1": 0.7490922294843864,
+    "threshold": 0.5,
+    "n_samples": 2146
+  },
+  "test": {
+    "macro_auroc": 0.9143272980324684,
+    "per_class_auroc": {
+      "NORM": 0.9346963159929962,
+      "MI": 0.902244459520579,
+      "STTC": 0.9310926429016142,
+      "CD": 0.908040497263305,
+      "HYP": 0.8955625744838471
+    },
+    "n_classes_in_macro": 5,
+    "macro_f1": 0.7194360544386272,
+    "micro_f1": 0.7520376743343598,
+    "threshold": 0.5,
+    "n_samples": 2158,
+    "loss": 0.302884751746122
+  },
+  "peak_gpu_mem_gb": 0.365
+}

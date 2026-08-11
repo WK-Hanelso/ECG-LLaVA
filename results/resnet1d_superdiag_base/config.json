@@ -1,0 +1,67 @@
+{
+  "exp_name": "resnet1d_superdiag_base",
+  "out_dir": "results",
+  "data": {
+    "raw_root": "/mnt/hdd_storage/datasets/ptb-xl/ptb-xl-1.0.3",
+    "cache_dir": "data/cache",
+    "sampling_rate": 100,
+    "label_set": "superdiagnostic",
+    "train_folds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "val_folds": [
+      9
+    ],
+    "test_folds": [
+      10
+    ],
+    "num_workers": 6,
+    "pin_memory": true
+  },
+  "model": {
+    "name": "resnet1d",
+    "in_channels": 12,
+    "stem_channels": 64,
+    "stem_kernel": 15,
+    "stage_channels": [
+      64,
+      128,
+      256,
+      512
+    ],
+    "blocks_per_stage": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "stage_strides": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "kernel_size": 7,
+    "dropout": 0.5,
+    "num_classes": 5
+  },
+  "train": {
+    "seed": 42,
+    "epochs": 50,
+    "batch_size": 128,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "warmup_epochs": 3,
+    "grad_clip": 1.0,
+    "amp": true,
+    "early_stop_patience": 10,
+    "pos_weight": false
+  }
+}

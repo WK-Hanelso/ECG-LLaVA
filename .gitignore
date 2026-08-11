@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+# 재생성 가능한 데이터 캐시 (tools/fetch_ptbxl.sh + prepare_ptbxl.py 로 복원).
+# 선행 슬래시로 저장소 루트에 고정한다. 없으면 src/ecgllava/data/ 까지 무시된다.
+/data/
+*.npy
+*.npz
+
+# 실험 산출물 중 용량이 큰 것만 제외. config/metrics/curves 는 커밋한다.
+results/*/best.pt
+results/*/*.pt
+
+.ipynb_checkpoints/
+*.onnx
+*.engine
