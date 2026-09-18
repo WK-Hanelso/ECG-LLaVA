@@ -1,0 +1,154 @@
+{
+  "package": "ECG-LLaVA Phase 1 — 12-lead ECG Encoder Baseline",
+  "generated_without_new_training_or_evaluation": true,
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "사용 데이터 규모",
+      "value": {"used": 21388, "total": 21799, "dropped_empty_label": 411},
+      "source": "results/resnet1d_superdiag_base/prepare_manifest.json::{n_used,n_total_records,n_dropped_empty_label}",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "목표 superdiagnostic 라벨이 비어 있는 레코드 제외"
+    },
+    {
+      "id": "C02",
+      "claim": "공식 strat_fold split",
+      "value": {"train": 17084, "validation": 2146, "test": 2158, "train_folds": [1,2,3,4,5,6,7,8], "validation_folds": [9], "test_folds": [10]},
+      "source": "results/resnet1d_superdiag_base/prepare_manifest.json::split",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "PTB-XL official split"
+    },
+    {
+      "id": "C03",
+      "claim": "입력 cache contract",
+      "value": {"shape": [21388, 12, 1000], "dtype": "float32", "sampling_rate_hz": 100},
+      "source": "results/resnet1d_superdiag_base/prepare_manifest.json::{signal_shape,signal_dtype,sampling_rate}",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "10-second 12-lead ECG"
+    },
+    {
+      "id": "C04",
+      "claim": "입력 무결성 결과",
+      "value": {"lead_order_mismatch": 0, "records_with_nan": 0, "length_mismatch": 0},
+      "source": "results/resnet1d_superdiag_base/prepare_manifest.json::{n_lead_order_mismatch,n_records_with_nan,n_length_mismatch}",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "기존 전처리 실행의 manifest 결과"
+    },
+    {
+      "id": "C05",
+      "claim": "train-only normalization",
+      "value": "lead-wise mean/std computed on train folds 1-8 only",
+      "source": "src/ecgllava/data/prepare_ptbxl.py:125-154; src/ecgllava/data/dataset.py:38-52",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "validation/test leakage 방지"
+    },
+    {
+      "id": "C06",
+      "claim": "test macro AUROC",
+      "value": 0.9143272980324684,
+      "display_value": "0.9143",
+      "source": "results/resnet1d_superdiag_base/metrics.json::test.macro_auroc",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "5-class macro mean"
+    },
+    {
+      "id": "C07",
+      "claim": "test macro F1",
+      "value": 0.7194360544386272,
+      "display_value": "0.7194",
+      "source": "results/resnet1d_superdiag_base/metrics.json::{test.macro_f1,test.threshold}",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "threshold=0.5"
+    },
+    {
+      "id": "C08",
+      "claim": "test class-wise AUROC",
+      "value": {"NORM": 0.9346963159929962, "MI": 0.902244459520579, "STTC": 0.9310926429016142, "CD": 0.908040497263305, "HYP": 0.8955625744838471},
+      "source": "results/resnet1d_superdiag_base/metrics.json::test.per_class_auroc",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "asset에서는 소수점 넷째 자리 반올림"
+    },
+    {
+      "id": "C09",
+      "claim": "encoder token interface",
+      "value": {"shape_contract": ["B", 512, 32], "temporal_tokens": 32, "recorded_feature_shape": [1, 512, 32]},
+      "source": "src/ecgllava/models/resnet1d.py:99-101; results/resnet1d_superdiag_base/metrics.json::feature_shape",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "pooling 전 feature map"
+    },
+    {
+      "id": "C10",
+      "claim": "model parameter count",
+      "value": 8739973,
+      "source": "results/resnet1d_superdiag_base/metrics.json::n_params",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "ResNet1D plus classification head"
+    },
+    {
+      "id": "C11",
+      "claim": "model selection",
+      "value": {"best_epoch": 5, "epochs_run": 15},
+      "source": "results/resnet1d_superdiag_base/metrics.json::{best_epoch,epochs_run}",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "validation macro AUROC 기준"
+    },
+    {
+      "id": "C12",
+      "claim": "post-peak validation degradation",
+      "value": {"epoch_5": {"train_loss": 0.262617, "val_macro_auroc": 0.920266}, "epoch_15": {"train_loss": 0.135809, "val_macro_auroc": 0.908982}},
+      "source": "results/resnet1d_superdiag_base/curves.csv:6,16",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "best checkpoint and early stopping rationale"
+    },
+    {
+      "id": "C13",
+      "claim": "manifest provenance",
+      "value": "SHA-256 recorded for public source metadata files",
+      "source": "results/resnet1d_superdiag_base/prepare_manifest.json::sha256",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "원본 절대 경로는 package에 포함하지 않음"
+    },
+    {
+      "id": "C14",
+      "claim": "Phase 2 boundary",
+      "value": "Projector and LLM not built",
+      "source": "README.md:97-101; src/ecgllava/models/resnet1d.py:99-101",
+      "reproducible": true,
+      "public_safe": true,
+      "note": "Phase 1 scope ends at encoder feature contract"
+    }
+  ],
+  "assets": [
+    {
+      "filename": "assets/01_ecg_pipeline.svg",
+      "also_available_as": "assets/01_ecg_pipeline.png",
+      "shows": "WFDB에서 입력 무결성 검사, label mapping, cache, official split, train-only normalization을 거쳐 ResNet1D 분류와 token contract로 이어지는 흐름",
+      "claim_ids": ["C01", "C02", "C03", "C04", "C05", "C09", "C13"]
+    },
+    {
+      "filename": "assets/02_class_auroc.png",
+      "also_available_as": "assets/02_class_auroc.svg",
+      "shows": "test class-wise AUROC, macro AUROC reference, macro F1",
+      "claim_ids": ["C06", "C07", "C08"]
+    },
+    {
+      "filename": "assets/03_token_interface.svg",
+      "also_available_as": "assets/03_token_interface.png",
+      "shows": "ResNet1D input-to-feature shape and unbuilt Phase 2 boundary",
+      "claim_ids": ["C09", "C14"]
+    }
+  ]
+}
