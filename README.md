@@ -1,5 +1,9 @@
 # ECG-LLaVA
 
+![ECG-LLaVA project concept banner](assets/project-banner-20261009.jpg)
+
+<sub>Conceptual project illustration; not clinical data or a measured model output.</sub>
+
 심전도(ECG)를 입력받아 자연어 판독을 생성하는 멀티모달 모델. LLaVA 레시피를 생체신호에 이식한다.
 
 1단계는 PTB-XL 부정맥 분류 베이스라인, 2단계는 프로젝터 + LoRA SFT 로 판독문 생성이다.
